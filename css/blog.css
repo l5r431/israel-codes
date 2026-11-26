@@ -1,0 +1,39 @@
+/* ─── BLOG PAGE ─── */
+.blog-bar { min-height: 2.8rem; }
+.blog-intro { padding-bottom: 0; }
+
+/* ─── POST CARDS ─── */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; padding: 1.5rem 0.5rem 2.5rem; }
+.post { display: flex; flex-direction: column; padding: 1.3rem; border: 1.5px solid var(--card-border); border-radius: 16px; background: var(--card-bg); transition: border-color var(--speed), transform var(--speed); }
+.post:hover { border-color: var(--accent); transform: translateY(-3px); }
+.post h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.6rem; }
+.post p { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); }
+.post-excerpt { flex: 1; }
+.post-full { display: none; }
+
+/* ─── DATE AND READ MORE ─── */
+.post-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1.5px dashed var(--card-border); }
+.post-foot time { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-muted); }
+.post-more { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.85rem; border: 1.5px solid var(--accent); border-radius: 10px; background: none; color: var(--accent); font: 600 0.78rem var(--font-body); cursor: pointer; transition: background var(--speed), color var(--speed); }
+.post-more:hover { background: var(--accent); color: #fff; }
+.post-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.post-more i { font-size: 0.7rem; }
+
+/* ─── POPUP ─── */
+body:has(.post-dialog[open]) { overflow: hidden; }
+.post-dialog { inset: 0; margin: auto; width: min(92vw, 42rem); padding: 0; border: 1.5px solid var(--accent); border-radius: 18px; background: var(--card-bg); color: inherit; overflow: hidden; }
+.post-dialog::backdrop { background: rgb(0 0 0 / 0.6); backdrop-filter: blur(3px); }
+.post-dialog[open] { animation: dialog-in 0.25s ease; }
+.post-dialog[open]::backdrop { animation: dialog-fade 0.25s ease; }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+@keyframes dialog-fade { from { opacity: 0; } }
+.dialog-panel { display: flex; flex-direction: column; max-height: min(85dvh, 44rem); padding: 1.4rem; }
+.dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.dialog-date { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-muted); }
+.dialog-close { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border: 1.5px solid var(--accent); border-radius: 10px; background: none; color: var(--accent); font-size: 0.9rem; cursor: pointer; transition: background var(--speed), color var(--speed); }
+.dialog-close:hover { background: var(--accent); color: #fff; }
+.dialog-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dialog-title { font-family: var(--font-display); font-size: clamp(1.3rem, 4vw, 1.7rem); font-weight: 600; line-height: 1.25; margin-top: 0.9rem; }
+.dialog-body { margin-top: 0.4rem; padding-right: 0.4rem; overflow-y: auto; }
+.dialog-body p { margin-top: 0.9rem; font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); }
+@media (prefers-reduced-motion: reduce) { .post, .post-dialog[open], .post-dialog[open]::backdrop { transition: none !important; animation: none !important; } }
