@@ -182,6 +182,11 @@ body::before {
     body { overflow-y: auto; touch-action: pan-y; }
     .hero { padding-top: 84px; }
 }
+@media (max-width: 340px) {
+    .stack {
+        display: none;
+    }
+}
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: 0.01ms !important; } }
 
 .brand { display: inline-flex; align-items: center; gap: 0.55rem; }
